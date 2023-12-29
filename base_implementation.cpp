@@ -1,4 +1,4 @@
-#include "stdafx.h"
+// #include "stdafx.h"
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -6,6 +6,8 @@
 #include <chrono>
 #include <iostream>
 #include <ratio>
+
+typedef char _TCHAR;
 
 /**
     Represents a Record Object
@@ -28,7 +30,7 @@ typedef std::vector<QBRecord> QBRecordCollection;
     records - the initial set of records to filter
     matchString - the string to search for
 */
-QBRecordCollection QBFindMatchingRecords(const QBRecordCollection &records, const std : string &columnName, const std::string &matchString)
+QBRecordCollection QBFindMatchingRecords(const QBRecordCollection &records, const std::string &columnName, const std::string &matchString)
 {
     QBRecordCollection result;
     std::copy_if(records.begin(), records.end(), std::back_inserter(result), [&](QBRecord rec)
