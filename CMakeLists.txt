@@ -8,5 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 file(GLOB APP_SOURCES
     "*.h"
     "*.cpp"
+    "base_implementation/*.h"
+    "base_implementation/*.cpp"
 )
 add_executable ( main ${APP_SOURCES})
