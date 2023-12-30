@@ -8,9 +8,9 @@ namespace
     {
         if (columnName == "column0")
         {
+            uint matchValue = std::stoul(matchString);
             return [&](QBRecord rec)
             {
-                uint matchValue = std::stoul(matchString);
                 return matchValue == rec.column0;
             };
         }
@@ -23,9 +23,9 @@ namespace
         }
         else if (columnName == "column2")
         {
+            long matchValue = std::stol(matchString);
             return [&](QBRecord rec)
             {
-                long matchValue = std::stol(matchString);
                 return matchValue == rec.column2;
             };
         }
