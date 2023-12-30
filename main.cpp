@@ -1,4 +1,5 @@
-#include "base_implementation/collection.h"
+#include "strategies/base.h"
+#include "test/seeder.h"
 
 #include <string>
 #include <vector>
@@ -7,19 +8,29 @@
 #include <chrono>
 #include <iostream>
 #include <ratio>
+#include <memory>
 
 int main(int argc, char *argv[])
 {
     using namespace std::chrono;
     // populate a bunch of data
-    auto data = populateDummyData("testdata", 1000);
-    // Find a record that contains and measure the perf
-    auto startTimer = steady_clock::now();
-    auto filteredSet = QBFindMatchingRecords(data, "column1", "testdata500");
-    auto filteredSet2 = QBFindMatchingRecords(data, "column2", "24");
-    std::cout << "profiler: " << double((steady_clock::now() - startTimer).count()) * steady_clock::period::num / steady_clock::period::den << std::endl;
+    auto data = Seeder::populateDummyData("testdata", 1000);
 
-    // make sure that the function is correct
-    assert(filteredSet.size() == 1);
+    std::vector<std::shared_ptr<IStrategy>> strategies = {
+        std::shared_ptr<IStrategy>(new BaseStrategy()) /**/
+    };
+
+    for (auto s : strategies)
+    {
+        // Find a record that contains and measure the perf
+        auto startTimer = steady_clock::now();
+        auto filteredSet = s->QBFindMatchingRecords(data, "column1", "testdata500");
+        auto filteredSet2 = s->QBFindMatchingRecords(data, "column2", "24");
+        std::cout << "profiler: " << double((steady_clock::now() - startTimer).count()) * steady_clock::period::num / steady_clock::period::den << std::endl;
+
+        // make sure that the function is correct
+        assert(filteredSet.size() == 1);
+    }
+
     return 0;
 }
