@@ -1,8 +1,15 @@
+#pragma once
+
 #include "strategy.h"
 
 class BaseStrategy : public IStrategy
 {
 public:
+    /**
+        Return records that contains a string in the StringValue field
+        records - the initial set of records to filter
+        matchString - the string to search for
+    */
     virtual QBRecordCollection QBFindMatchingRecords(
         const QBRecordCollection &records,
         const std::string &columnName,
