@@ -35,11 +35,11 @@ int main(int argc, char *argv[])
         {
             auto filteredSet = s->QBFindMatchingRecords(data, "column1", "testdata500");
             auto filteredSet2 = s->QBFindMatchingRecords(data, "column2", "24");
+
+            // make sure that the function is correct
             assert(filteredSet.size() == 1);
         }
         std::cout << "profiler: " << double((steady_clock::now() - startTimer).count()) * steady_clock::period::num / steady_clock::period::den << std::endl;
-
-        // make sure that the function is correct
     }
 
     return 0;
