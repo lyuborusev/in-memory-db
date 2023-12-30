@@ -3,4 +3,6 @@
 namespace Seeder
 {
     QBRecordCollection populateDummyData(const std::string &prefix, int numRecords);
+
+    QBRecordCollectionSOA populateDummyDataSOA(const std::string &prefix, int numRecords);
 }
