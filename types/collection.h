@@ -19,4 +19,5 @@ struct QBRecordCollectionSOA
 
     void reserve(size_t _size);
     void emplace_back(QBRecord rec);
+    void remove(uint id);
 };

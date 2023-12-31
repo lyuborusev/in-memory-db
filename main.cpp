@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 
     Context<BaseStrategy, QBRecordCollection>().execute(data);
 
+    data = Seeder::populateDummyData("testdata", numberOfRecords);
     Context<CompareFunStrategy, QBRecordCollection>().execute(data);
 
     Context<SOALayouStrategy, QBRecordCollectionSOA>().execute(dataSOA);

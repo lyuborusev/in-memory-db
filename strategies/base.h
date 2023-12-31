@@ -14,4 +14,8 @@ public:
         const QBRecordCollection &records,
         const std::string &columnName,
         const std::string &matchString);
+
+    void DeleteRecordByID(
+        QBRecordCollection &records,
+        uint id);
 };

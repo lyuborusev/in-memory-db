@@ -1,6 +1,7 @@
 #include "compare_fun.h"
 #include <functional>
 #include <utility>
+#include <algorithm>
 
 namespace
 {
@@ -53,4 +54,16 @@ QBRecordCollection CompareFunStrategy::QBFindMatchingRecords(const QBRecordColle
     QBRecordCollection result;
     std::copy_if(records.begin(), records.end(), std::back_inserter(result), func);
     return result;
+}
+
+void CompareFunStrategy::DeleteRecordByID(QBRecordCollection &records, uint id)
+{
+    auto iter = std::find_if(records.begin(), records.end(), [&](QBRecord rec)
+                             { return rec.column0 == id; });
+    if (iter == records.end())
+    {
+        return;
+    }
+    *iter = records.back();
+    records.pop_back();
 }

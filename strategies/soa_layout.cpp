@@ -1,8 +1,8 @@
 #include "soa_layout.h"
+#include <algorithm>
 
 namespace
 {
-
     std::function<bool(int)> getCompareFunc(const QBRecordCollectionSOA &records, const std::string &columnName, const std::string &matchString)
     {
         if (columnName == "column0")
@@ -45,7 +45,7 @@ namespace
     }
 }
 
-/*virtual*/ QBRecordCollection SOALayouStrategy::QBFindMatchingRecords(
+QBRecordCollection SOALayouStrategy::QBFindMatchingRecords(
     const QBRecordCollectionSOA &records,
     const std::string &columnName,
     const std::string &matchString)
@@ -67,4 +67,9 @@ namespace
         }
     }
     return collection;
+}
+
+void SOALayouStrategy::DeleteRecordByID(QBRecordCollectionSOA &records, uint id)
+{
+    records.remove(id);
 }

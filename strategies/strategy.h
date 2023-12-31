@@ -11,7 +11,6 @@ public:
         using namespace std::chrono;
 
         const int operationRepeatTime = 10000;
-
         // Find a record that contains and measure the perf
         auto startTimer = steady_clock::now();
 
@@ -23,6 +22,13 @@ public:
             // make sure that the function is correct
             assert(filteredSet.size() == 1);
         }
+
+        strategy.DeleteRecordByID(data, 24);
+        auto filteredSet3 = strategy.QBFindMatchingRecords(data, "column0", "24");
+
+        // make sure that the function is correct
+        assert(filteredSet3.size() == 0);
+
         std::cout << "profiler: " << double((steady_clock::now() - startTimer).count()) * steady_clock::period::num / steady_clock::period::den << std::endl;
     }
 

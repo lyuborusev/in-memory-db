@@ -9,4 +9,8 @@ public:
         const QBRecordCollectionSOA &records,
         const std::string &columnName,
         const std::string &matchString);
+
+    void DeleteRecordByID(
+        QBRecordCollectionSOA &records,
+        uint id);
 };

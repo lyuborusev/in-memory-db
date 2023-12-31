@@ -20,3 +20,16 @@ QBRecordCollection BaseStrategy::QBFindMatchingRecords(const QBRecordCollection 
         } });
     return result;
 }
+
+void BaseStrategy::DeleteRecordByID(QBRecordCollection &records, uint id)
+{
+    auto iter = std::find_if(records.begin(), records.end(), [&](QBRecord rec)
+                             { return rec.column0 == id; });
+    if (iter == records.end())
+    {
+        return;
+    }
+
+    *iter = records.back();
+    records.pop_back();
+}
