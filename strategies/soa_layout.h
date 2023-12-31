@@ -1,11 +1,11 @@
 #pragma once
 
-#include "strategy.h"
+#include "../types/collection.h"
 
-class SOALayouStrategy //: public IStrategy
+class SOALayouStrategy
 {
 public:
-    /*virtual*/ QBRecordCollection QBFindMatchingRecords(
+    QBRecordCollection QBFindMatchingRecords(
         const QBRecordCollectionSOA &records,
         const std::string &columnName,
         const std::string &matchString);

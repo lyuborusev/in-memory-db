@@ -1,8 +1,8 @@
 #pragma once
 
-#include "strategy.h"
+#include "../types/collection.h"
 
-class BaseStrategy : public IStrategy
+class BaseStrategy
 {
 public:
     /**
@@ -10,7 +10,7 @@ public:
         records - the initial set of records to filter
         matchString - the string to search for
     */
-    virtual QBRecordCollection QBFindMatchingRecords(
+    QBRecordCollection QBFindMatchingRecords(
         const QBRecordCollection &records,
         const std::string &columnName,
         const std::string &matchString);

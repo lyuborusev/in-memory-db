@@ -1,11 +1,11 @@
 #pragma once
 
-#include "strategy.h"
+#include "../types/collection.h"
 
-class CompareFunStrategy : public IStrategy
+class CompareFunStrategy
 {
 public:
-    virtual QBRecordCollection QBFindMatchingRecords(
+    QBRecordCollection QBFindMatchingRecords(
         const QBRecordCollection &records,
         const std::string &columnName,
         const std::string &matchString);
