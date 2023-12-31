@@ -7,19 +7,6 @@
     Represents a Record Object
 */
 
-template <typename T>
-class Record
-{
-public:
-    Record(T _value)
-        : value(_value)
-    {
-    }
-
-private:
-    T value;
-};
-
 struct QBRecord
 {
     uint column0; // unique id column
