@@ -4,30 +4,18 @@
 #include "strategies/soa_layout.h"
 #include "test/seeder.h"
 
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <assert.h>
-#include <chrono>
-#include <iostream>
-#include <ratio>
-#include <memory>
-
 int main(int argc, char *argv[])
 {
     // populate a bunch of data
-    auto data = Seeder::populateDummyData("testdata", 1000);
+    const int numberOfRecords = 1000;
+    auto data = Seeder::populateDummyData("testdata", numberOfRecords);
+    auto dataSOA = Seeder::populateDummyDataSOA("testdata", numberOfRecords);
 
-    auto dataSOA = Seeder::populateDummyDataSOA("testdata", 1000);
+    Context<BaseStrategy, QBRecordCollection>().execute(data);
 
-    auto baseStrategy = Context<BaseStrategy, QBRecordCollection>();
-    baseStrategy.execute(data);
+    Context<CompareFunStrategy, QBRecordCollection>().execute(data);
 
-    auto compareFunStrategy = Context<CompareFunStrategy, QBRecordCollection>();
-    compareFunStrategy.execute(data);
-
-    auto soaLayoutStrategy = Context<SOALayouStrategy, QBRecordCollectionSOA>();
-    soaLayoutStrategy.execute(dataSOA);
+    Context<SOALayouStrategy, QBRecordCollectionSOA>().execute(dataSOA);
 
     return 0;
 }
