@@ -29,7 +29,7 @@ public:
         // make sure that the function is correct
         assert(filteredSet3.size() == 0);
 
-        std::cout << "profiler: " << double((steady_clock::now() - startTimer).count()) * steady_clock::period::num / steady_clock::period::den << std::endl;
+        std::cout << strategy.Name() << "\t\tprofiler: " << double((steady_clock::now() - startTimer).count()) * steady_clock::period::num / steady_clock::period::den << std::endl;
     }
 
 private:

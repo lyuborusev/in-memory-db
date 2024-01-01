@@ -73,3 +73,8 @@ void SOALayouStrategy::DeleteRecordByID(QBRecordCollectionSOA &records, uint id)
 {
     records.remove(id);
 }
+
+std::string SOALayouStrategy::Name()
+{
+    return "SOALayouStrategy";
+}

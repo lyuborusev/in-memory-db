@@ -1,17 +1,18 @@
 #pragma once
 
 #include "../types/collection.h"
+#include "../types/collection_generic.h"
 
-class SOALayouStrategy
+class SOAGenericStrategy
 {
 public:
     QBRecordCollection QBFindMatchingRecords(
-        const QBRecordCollectionSOA &records,
+        const QBGenericCollection &records,
         const std::string &columnName,
         const std::string &matchString);
 
     void DeleteRecordByID(
-        QBRecordCollectionSOA &records,
+        QBGenericCollection &records,
         uint id);
 
     std::string Name();

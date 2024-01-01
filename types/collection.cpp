@@ -30,12 +30,12 @@ void QBRecordCollectionSOA::remove(uint id)
     }
 
     const int index = iter - column0.begin();
-    /*
-        std::iter_swap(column0.begin() + index, column0.back());
-        std::iter_swap(column1.begin() + index, column1.back());
-        std::iter_swap(column2.begin() + index, column2.back());
-        std::iter_swap(column3.begin() + index, column3.back());
-    */
+
+    column0[index] = column0.back();
+    column1[index] = column1.back();
+    column2[index] = column2.back();
+    column3[index] = column3.back();
+
     column0.pop_back();
     column1.pop_back();
     column2.pop_back();

@@ -33,3 +33,8 @@ void BaseStrategy::DeleteRecordByID(QBRecordCollection &records, uint id)
     *iter = records.back();
     records.pop_back();
 }
+
+std::string BaseStrategy::Name()
+{
+    return "BaseStrategy";
+}

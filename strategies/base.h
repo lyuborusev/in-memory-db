@@ -18,4 +18,6 @@ public:
     void DeleteRecordByID(
         QBRecordCollection &records,
         uint id);
+
+    std::string Name();
 };
