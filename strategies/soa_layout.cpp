@@ -8,14 +8,14 @@ namespace
         if (columnName == "column0")
         {
             uint matchValue = std::stoul(matchString);
-            return [&](int index)
+            return [&records, matchValue](int index)
             {
                 return matchValue == records.column0[index];
             };
         }
         else if (columnName == "column1")
         {
-            return [&](int index)
+            return [&records, matchString](int index)
             {
                 return records.column1[index].find(matchString) != std::string::npos;
             };
@@ -23,14 +23,14 @@ namespace
         else if (columnName == "column2")
         {
             long matchValue = std::stol(matchString);
-            return [&](int index)
+            return [&records, matchValue](int index)
             {
                 return matchValue == records.column2[index];
             };
         }
         else if (columnName == "column3")
         {
-            return [&](int index)
+            return [&records, matchString](int index)
             {
                 return records.column3[index].find(matchString) != std::string::npos;
             };

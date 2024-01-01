@@ -10,14 +10,15 @@ namespace
         if (columnName == "column0")
         {
             uint matchValue = std::stoul(matchString);
-            return [&](QBRecord rec)
+            auto lambda = [matchValue](QBRecord rec)
             {
                 return matchValue == rec.column0;
             };
+            return lambda;
         }
         else if (columnName == "column1")
         {
-            return [&](QBRecord rec)
+            return [matchString](QBRecord rec)
             {
                 return rec.column1.find(matchString) != std::string::npos;
             };
@@ -25,14 +26,14 @@ namespace
         else if (columnName == "column2")
         {
             long matchValue = std::stol(matchString);
-            return [&](QBRecord rec)
+            return [matchValue](QBRecord rec)
             {
                 return matchValue == rec.column2;
             };
         }
         else if (columnName == "column3")
         {
-            return [&](QBRecord rec)
+            return [matchString](QBRecord rec)
             {
                 return rec.column3.find(matchString) != std::string::npos;
             };

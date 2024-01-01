@@ -8,15 +8,15 @@ int main(int argc, char *argv[])
 {
     // populate a bunch of data
     const int numberOfRecords = 1000;
-    auto data = Seeder::populateDummyData("testdata", numberOfRecords);
-    auto dataSOA = Seeder::populateDummyDataSOA("testdata", numberOfRecords);
 
-    Context<BaseStrategy, QBRecordCollection>().execute(data);
+    Context<BaseStrategy, QBRecordCollection>().execute(
+        Seeder::populateDummyData("testdata", numberOfRecords));
 
-    data = Seeder::populateDummyData("testdata", numberOfRecords);
-    Context<CompareFunStrategy, QBRecordCollection>().execute(data);
+    Context<CompareFunStrategy, QBRecordCollection>().execute(
+        Seeder::populateDummyData("testdata", numberOfRecords));
 
-    Context<SOALayouStrategy, QBRecordCollectionSOA>().execute(dataSOA);
+    Context<SOALayouStrategy, QBRecordCollectionSOA>().execute(
+        Seeder::populateDummyDataSOA("testdata", numberOfRecords));
 
     return 0;
 }
